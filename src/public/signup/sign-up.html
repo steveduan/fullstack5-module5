@@ -1,0 +1,74 @@
+<div class="container" class="form">
+<fieldset>
+    <h2 class="text-center">Please input your sign up information!</h2>
+    <form name='regForm' novalidate class='row g-3'>
+    <div class='row'>
+            <div class='col-md-6'>
+                <label for="inputFirstName" class="form-label">First Name:</label>
+      <input type="text" name="FirstName" placeholder="First Name"
+        ng-model="reg.user.firstname"
+        required
+        class="form-control"
+        id='inputFirstName'>
+          </div>
+         <div class='col-md-6'>
+             <label for="inputLastName" class='form-label'>Last Name:</label>
+            <input type="text" name="LastName" placeholder="Last Name"
+              ng-model="reg.user.lastname"
+              required
+              class="form-control"
+              id="inputLastName">
+         </div>
+     </div>
+     <br>
+
+     <div class='row'>
+         <div class='col-md-6'>
+         <label for="inputEmail" class="form-label">Email:</label>
+      <input type="email" name="email" placeholder="Email"
+        ng-model="reg.user.email"
+        required
+        class="form-control form-control-lg"
+        id="inputEmail">
+        <span ng-if="regForm.email.$invalid && regForm.email.$touched">
+          Must be a valid email address: handle@domain format
+        </span>
+        </div>
+        <div class='col-md-6'>
+            <label for="inputPhone" class="form-label">Phone Number:</label>
+            <input type="text" name="phone" placeholder="Phone ###-###-####"
+            ng-model="reg.user.phone"
+            pattern="(\d{3})-(\d{3})-(\d{4})"
+            class="form-control"
+            required
+            id="inputPhone"
+            >
+            <span ng-if="regForm.phone.$invalid && regForm.phone.$touched">
+              Phone must be in the format ###-###-####.
+            </span>
+        </div>
+        </div>
+        <br>
+        <div class='row'>
+            <div class="col-md-12">
+                <label for="menuNumber" class='form-label'>Menu Number:(Such as L)</label>
+                <input type="text" name="menuNumber" placeholder="Menu number"
+                ng-model="reg.user.menuNumber"
+                id="menuNumber"
+                required
+                class="form-control">
+            </div>
+        </div>
+        <br>     
+
+      <button
+        class="btn btn-primary mb-4 center-block"  
+        ng-disabled="regForm.$invalid"
+        ng-click="reg.submit(regForm.$valid)">Submit</button>
+        <h3 class="text-center" ng-if="reg.result_show">
+            <span ng-if="reg.complete">Your information has been saved</span>
+            <span ng-if="!reg.complete">No such menu number exists</span>
+        </h3>
+    </form>
+  </fieldset>
+  </div>
