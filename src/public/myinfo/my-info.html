@@ -1,1 +1,40 @@
-<h1>this is My Info!</h1>
+<div class="container"  ng-hide="info.signup">
+    <h3>Not Signed Up Yet.</h3>
+    <a ui-sref="public.signup">Sign up Now!</a>
+</div>
+<div class="container" ng-if="info.signup">
+    <div class="row">
+        <div class="col">
+            <span>User name:</span>
+            <br>
+             {{info.user.lastname}} {{info.user.firstname}}
+        </div>    
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-6">
+            <span>User email:</span>
+            <br>
+            {{info.user.email}}
+        </div>
+
+        <div class="col-md-6">
+            <span>User phone:</span>
+            <br>
+            {{info.user.phone}}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-5">
+          <div class="menu-item-photo">
+            <div>{{info.user.details.short_name}}</div>
+            <img class="img-responsive" width="250" height="150" ng-src="/images/{{info.user.details.short_name}}.jpg" alt="{{info.user.details.name}}">
+          </div>
+        </div>
+        <div class="menu-item-description col-sm-7">
+          <h3 class="menu-item-title">{{info.user.details.name}}</h3>
+          <p class="menu-item-details">{{info.user.details.description}}</p>
+        </div>
+      </div>
+</div>

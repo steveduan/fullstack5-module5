@@ -65,9 +65,9 @@
         class="btn btn-primary mb-4 center-block"  
         ng-disabled="regForm.$invalid"
         ng-click="reg.submit(regForm.$valid)">Submit</button>
-        <h3 class="text-center" ng-if="reg.result_show">
-            <span ng-if="reg.complete">Your information has been saved</span>
-            <span ng-if="!reg.complete">No such menu number exists</span>
+        <h3 class="text-center" >
+            <span ng-if="reg.result_show">Your information has been saved</span>
+            <span ng-if="reg.result_error">No such menu number exists</span>
         </h3>
     </form>
   </fieldset>

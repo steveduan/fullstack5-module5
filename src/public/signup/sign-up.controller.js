@@ -14,15 +14,24 @@ function SignUpController(UserInfoService){
     $ctrl.user.phone="";
     $ctrl.user.menuNumber="";
     $ctrl.result_show=false;
+    $ctrl.result_error=false;
     $ctrl.submit=function(formCompleted){
         if(formCompleted){
-            $ctrl.result_show=true;
+            
         
-            var result=UserInfoService.submit($ctrl.user.firstname,$ctrl.user.lastname,$ctrl.user.email,$ctrl.user.phone,$ctrl.user.menuNumber);
-            $ctrl.complete=result;
+            UserInfoService.getDish($ctrl.user.menuNumber).then(function (response){
+                $ctrl.user.details=response.data;
+                UserInfoService.saveUser($ctrl.user);
+                console.log("user: ",$ctrl.user);
+                $ctrl.result_show=true;
+            },function (reject){
+                $ctrl.result_error=true;
+                console.log(reject);
+            })
         }else{
         console.log("Please complete form first!");
-        $ctrl.result_show=false;    
+        $ctrl.result_show=false;
+        $ctrl.result_error=false;    
         }
       }
 }
